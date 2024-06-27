@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio</title>
+ 
+    <script src="https://kit.fontawesome.com/7396674673.js" crossorigin="anonymous"></script>
+</head>
+<style>
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+html{
+    scroll-behavior: smooth;
+}
+body{
+    background-color: #080808;
+    color: #fff;
+}
+#header{
+    width: 100%;
+    height: 100vh;
+    background-image: url('images/background-home.png');
+    background-size: cover;
+    background-position: center;
+}
+.container{
+    padding: 10px 10%;
+}
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.logo{
+    width: 120px;
+}
+nav ul li{
+    display: inline-block;
+    list-style: none;
+    margin: 5px 20px;
+}
+nav ul li a{
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    position: relative;
+}
+nav ul li a::after{
+    content: '';
+    width: 0%;
+    height: 3px;
+    background: #ff004f;
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    transition: 0.5s;
+}
+nav ul li a:hover::after{
+    width: 100%;
+}
+.header-text{
+    margin-top:20%;
+    font-size: 30px;
+}
+.header-text h2{
+    margin-top:20px;
+    font-size: 50px;
+}
+.header-text h2 span{
+    color: #ff004f;
+}
+/* ---------------ABOUT--------------- */
+#about{
+    padding: 80px 0;
+    color: #ababab;
+}
+.row{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.about-col-1{
+    flex-basis: 35%;
+}
+.about-col-1 img{
+    width: 100%;
+    border-radius: 15px;
+}
+.about-col-2{
+    flex-basis: 60%;
+}
+.sub-title{
+    font-size: 60px;
+    font-weight: 600;
+    color: #fff;
+}
+.tab-titles{
+    margin: 20px 0px 40px;
+    display: flex;
+}
+.tab-links{
+    margin-right: 50px;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+}
+.tab-links::after{
+    content: '';
+    width: 0;
+    height: 3px;
+    background: #ff004f;
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    transition: 0.5s;
+}
+/* .tab-links.active-link::after{
+    width: 50%;
+} */
+
+.tab-contents ul li{
+    list-style: none;
+    margin: 10px 0;
+}
+.tab-contents ul li span{
+    color: #b54769;
+    font-size: 14px;
+}
+.tab-contents{
+    display: none;
+}
+.tab-contents.active-tab{
+    display: block;
+}
+/* --------------services------------ */
+#services{
+    padding: 30px 0;
+}
+.services-list{
+    display: grid;
+    grid-template-columns: repeat(auto-fit , minmax(250px,1fr));
+    grid-gap: 40px;
+    margin-top: 50px;
+}
+.services-list div{
+    background-color: #262626;
+padding: 40px;
+font-size: 13px;
+font-weight: 300;
+border-radius: 10px;
+transition: background 0.5s,transform 0.5s;
+}
+.services-list div i{
+    font-size: 50px;
+    margin-bottom: 30px;
+}
+.services-list div h2{
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+.services-list div a{
+    text-decoration: none;
+    color: #fff;
+    font-size: 12px;
+    margin-top: 20px;
+    display: inline-block;
+}
+.services-list div:hover{
+    background: #ff004f;
+    transform: translateY(-10px);
+}
+/* -------projects------- */
+#projects{
+    padding: 30px 0;
+}
+.projects-list{
+    display: grid;
+    grid-template-columns: repeat(auto-fit , minmax(250px,1fr));
+    grid-gap: 40px;
+    margin-top: 50px;
+}
+.projects-list div{
+    background-color: #262626;
+padding: 40px;
+font-size: 13px;
+font-weight: 300;
+border-radius: 10px;
+transition: background 0.5s,transform 0.5s;
+}
+.projects-list div i{
+    font-size: 50px;
+    margin-bottom: 30px;
+}
+.projects-list div h2{
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+.projects-list div a{
+    text-decoration: none;
+    color: #fff;
+    font-size: 12px;
+    margin-top: 20px;
+    display: inline-block;
+}
+.projects-list div:hover{
+    background: #ff004f;
+    transform: translateY(-10px);
+}
+/* -------contact-------- */
+.contact-left{
+    flex-basis: 35%;
+}
+.contact-right{
+    flex-basis: 35%;
+}
+.contact-left p{
+    margin-top: 30px;
+}
+.contact-left p i{
+    color:#ff004f ;
+    margin-right: 15px;
+    font-size: 25px;
+}
+.social-icons{
+    margin-top: 30px;
+}
+.social-icons a{
+    text-decoration: none;
+    font-size: 30px;
+    margin-right: 15px;
+    color: #ababab ;
+    display: inline-block;
+    transition: transform 0.5s;
+}
+.social-icons a:hover{
+color: #ff004f;
+transform: translateY(-5px); 
+}
+.btn{
+    text-decoration: none;
+    display: inline-block;
+    margin: 50px auto;
+    width: fit-content;
+    border: 1px solid #ff004f;
+    padding: 14px 50px;
+    border-radius: 6px;
+    background: #ff004f;
+    color: white;
+
+}
+
+/* ------cssforsmallscreen----- */
+nav .fas{
+    display: none;
+}
+@media only screen and (max-width: 600px){
+    #header{
+        background-image: url('images/back-2.png');
+    }
+    .header-text{
+        margin-top: 100%;
+        font-size: 16px;
+    }
+    .header-text h1{
+        font-size: 30px;
+    }
+    nav .fas{
+        display: block;
+        font-size: 25px;
+    }
+    nav ul{
+        background: #ff004f;
+        position: fixed;
+        top: 0;
+        right: -200px;
+        width: 200px;
+        height: 100vh;
+        padding-top: 50px;
+        z-index: 2;
+        transition: right 0.5s;
+    }
+    nav ul li{
+        display: block;
+        margin: 25px;
+
+    }
+    nav ul .fas{
+        position: absolute;
+        top: 25px;
+        left: 25px;
+        cursor: pointer;
+       
+    }
+    .header-text{
+        margin-top: 350px;
+        font-size: 20px;
+    }
+.sub-title{
+    font-size: 40px;
+}
+.about-col-1 , .about-col-2{
+    flex-basis: 100%;
+}
+
+.contact-left h1{
+    font-size: 20px;
+}
+.contact-left p{
+    font-size: 12px;
+}
+.contact-left p i{
+    font-size: 15px;
+}
+.btn{
+ padding: 5%;
+   font-size: 15px;
+}
+
+}
+</style>
+<body>
+    <div id="header">
+        <div class="container">
+            <nav>
+           <h1 style="color: #ff004f; margin-top: 4%;">Ushna</h1>
+                <ul id="sidemenu">
+                    <li> <a href="#header">Home</a> </li>
+                    <li> <a href="#about">About</a> </li>
+                    <li> <a href="#services">Services</a> </li>
+                    <li> <a href="#projects">Projects</a> </li>
+                    <li> <a href="#contact">Contact</a> </li>
+                    <i class="fas fa-times" onclick="closemenu()"></i>
+                </ul>
+                <i class="fas fa-bars"onclick="openmenu()"></i>
+
+            </nav>
+            <div class="header-text">
+                <p>FullStack Developer</p>
+                <h2>Hi,My name is <br> <span> Ushna </span> Nazish</h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- ABOUT-SECTION -->
+
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="about-col-1">
+                    <img src="images/about-1.png" alt="">
+                </div>
+
+                <div class="about-col-2">
+                    <h1 class="sub-title">About Me</h1>
+                    <p> I am proactive and driven individual with a keen interest in personal
+                        projects and initiatives. Through self-directed work, I have honed valuable
+                        skills in project management, problem-solving, and self-motivation. I am
+                        commitment to excellence and willingness to take on challenges make
+                        them a valuable asset to any team. With a strong work ethic and a
+                        passion for learning, I am eager to apply my skills and contribute
+                        effectively in a professional setting.</p>
+
+                    <div class="tab-titles">
+                        <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+                        <p class="tab-links" onclick="opentab('experience')">Experience</p>
+                        <p class="tab-links" onclick="opentab('education')">Education</p>
+                    </div>
+
+                    <div class="tab-contents active-tab " id="skills">
+                        <ul>
+                            <li><span>FullStack</span><br>Developer</li>
+                        </ul>
+                    </div>
+
+
+                    <div class="tab-contents" id="experience">
+                        <ul>
+                            <li><span>Fresher</span><br>No experience</li>
+                        </ul>
+                    </div>
+
+
+                    <div class="tab-contents" id="education">
+                        <ul>
+                            <li><span>Diploma</span><br>In Web Development</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ----------SERVICES--------------- -->
+
+    <div id="services">
+        <div class="container">
+            <h1 class="sub-title">My Services</h1>
+            <div class="services-list">
+                <div>
+                    <i class="fa-solid fa-cube"></i>
+                    <h2>Web Design</h2>
+                    <p>
+
+                        "Crafting digital experiences, one pixel at a time.
+
+                        "Transforming visions into captivating websites.
+                        Elevate your online presence with stunning web design."</p>
+                    <a href="#">Learn More</a>
+                </div>
+
+                <div>
+                    <i class="fa-solid fa-code"></i>
+                    <h2>Web Development</h2>
+                    <p>"Unlocking the full potential of your online presence through expert web development.
+                        Empowering your online success through code and creativity."</p>
+                    <a href="#">Learn More</a>
+                </div>
+
+                <div>
+                    <i class="fa-solid fa-font-awesome"></i>
+                    <h2>FullStack Development</h2>
+                    <p>
+                        "From front-end finesse to back-end brilliance, we've got your full stack covered.Blending
+                        front-end flair with back-end prowess for comprehensive digital solutions."</p>
+                    <a href="#">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ----------projects-------------- -->
+    <div id="projects">
+        <div class="container">
+            <h1 class="sub-title">My Projects</h1>
+            <div class="projects-list">
+                <div>
+                    <i class="fa-solid fa-wallet"></i>
+                    <h2>Currency Converter</h2>
+                    <p>
+
+                        "I developed a currency converter tool that efficiently calculates and converts values between various currencies, providing users with real-time exchange rates and seamless currency conversion capabilities."</p>
+                   
+                </div>
+
+                <div>
+                    <i class="fa-solid fa-clipboard"></i>
+                    <h2>To-do List</h2>
+                    <p>"I designed and developed a user-friendly todo list that helps users organize tasks efficiently. The app features intuitive task management, priority setting, and deadline tracking functionalities to enhance productivity and task completion."</p>
+                
+                </div>
+
+                <div>
+                    <i class="fa-solid fa-utensils"></i>
+                    <h2>E-commerce Food Website</h2>
+                    <p>
+                        "I created an e-commerce food website that offers a seamless shopping experience for culinary enthusiasts. The platform features a user-friendly interface, comprehensive product listings, secure payment processing, and timely delivery services, ensuring a convenient and satisfying shopping experience for customers."</p>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- -------contact-------- -->
+    <div id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="contact-left">
+                    <h1 class="sub-title">Contact Me</h1>
+                    <p>   <i class="fas fa-paper-plane "></i>ushnanazish29@gmail.com</p>
+                    <div class="social-icons">
+                        <a href="www.linkedin.com/in/ushna-nazish-nazar"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="ushnanazish29@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+                    </div>
+                    <a href="images/Ushna nazish resume.pdf" download class="btn">Download CV</a>
+                </div>
+                <!-- <div class="contact-right">
+                    <form action="">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                        <input type="email" name="email" placeholder="Your Email" required>
+                        <textarea name="message" rows="6" placeholder="Your Message"></textarea>
+                        <button type="submit">Submit</button>
+                    </form>
+                </div> -->
+            </div>
+        </div>
+    </div>
+   
+
+
+
+
+    <script>
+        var tablinks = document.getElementsByClassName("tab-links");
+        var tabcontents = document.getElementsByClassName("tab-contents");
+
+        function opentab(tabname) {
+            for (tablink of tablinks) {
+                tablink.classList.remove("active-link");
+            }
+            for (tabcontent of tabcontents) {
+                tabcontent.classList.remove("active-tab");
+            }
+            event.currentTarget.classList.add("active-link");
+            document.getElementById(tabname).classList.add("active-tab");
+        }
+
+    </script>
+
+    <script>
+        var sidemenu = document.getElementById("sidemenu");
+
+        function openmenu(){
+            sidemenu.style.right = "0";
+        }
+
+        function closemenu(){
+            sidemenu.style.right = "-200px";
+        }
+    </script>
+</body>
+
+</html>
