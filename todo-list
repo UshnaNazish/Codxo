@@ -1,0 +1,151 @@
+<?php
+
+$servername="localhost";
+$username="root";
+$password="";
+$db="to-do-list";
+
+$conn=mysqli_connect($servername,$username,$password,$db);
+
+if(isset($_POST['submit'])){
+    $notes=$_POST['input'];
+    $sql="INSERT INTO `notes`(`description`) VALUES ('$notes')";
+    $result=mysqli_query($conn,$sql);
+    echo"<script>alert('Your Notes Are Saved');</script>";
+}
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+*{
+    margin: 0;
+    padding: 0%;
+    box-sizing: border-box;
+}
+.container{
+    width: 100%;
+    min-height: 100vh;
+    padding: 10px;
+}
+.row{
+ background-color: #e9e7e7;
+    width: 100%;
+    max-width: 540px;
+    margin: 100px auto 20px;
+    padding: 40px 30px 70px;
+    border-radius: 10px;
+}
+.head{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+form{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 30px;
+    padding-left: 20px;
+    margin-bottom: 25px;
+}
+.input{
+flex: 1;
+border: none;
+outline: none;
+background:#cccccc;
+padding: 16px;
+font-weight: 14px;
+border-radius: 40px;
+}
+.submit{
+  border: none;
+  padding: 16px 50px;
+  outline: none;
+  background: #ff5945;
+  color:#fff;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 40px;
+}
+.submit:hover{
+    background-color: aqua;
+}
+.notes{
+    background-color: #e9e7e7;
+    width: 100%;
+    max-width: 540px;
+    padding:5px 30px;
+    margin:  auto 28.5%;
+    border-radius: 10px;
+}
+.nsave{
+    /* display:flex; */
+    padding-top: 20px;
+    
+}
+ul li{
+    display: inline-block;
+}
+/* .delete:hover{
+background-color: #000000;
+} */
+
+</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <h2 class="head">To-Do List</h2>
+            <form action="" method="POST">
+                <input type="text" name="input" class="input" placeholder="Add Your Text" required>
+                <input type="submit" name="submit" class="submit" value="Add">
+</form>
+            
+        </div>
+
+        <div class="notes">
+            <h2 class="notes-head">Your Notes</h2><br>
+            <ul>
+                <li> <?php 
+                    if($conn){
+                        $sqlf = "SELECT * FROM `notes`";
+                        $resultf = mysqli_query($conn , $sqlf);
+                        if(mysqli_num_rows($resultf) > 0){
+                        while($row = mysqli_fetch_assoc($resultf)){
+                            echo $row['description'] . "<br>";
+                   
+                    ?></li>
+                   <form action="" method="POST">
+                    <input style="  margin-top: -20px;margin-left: 90%;display: inline-block;border: none;outline: none;background: #ff5945;color:#fff;padding: 8px; border-radius: 30px;" type="submit" class="delete" name="delete-btn" value="delete">
+                    <input type="hidden" name="idd" value="<?php echo $row['id']; ?>">
+
+                </form>
+              
+            </ul>
+            <hr>
+            <br>
+ <?php
+if(isset($_POST['delete-btn'])){
+    $delid=$_POST['idd'];
+    $sqldel="DELETE FROM `notes` WHERE 'id' = '$delid' ";
+    $resultdel=mysqli_query($conn,$sqldel);
+}
+        }}
+    }
+    ?>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<?php
+
+?>
